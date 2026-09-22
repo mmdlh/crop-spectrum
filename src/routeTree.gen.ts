@@ -10,33 +10,92 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EnvironmentRouteImport } from './routes/environment'
+import { Route as FeedingRouteImport } from './routes/feeding'
+import { Route as HealthRouteImport } from './routes/health'
+import { Route as LivestockRouteImport } from './routes/livestock'
+import { Route as OperationsRouteImport } from './routes/operations'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnvironmentRoute = EnvironmentRouteImport.update({
+  id: '/environment',
+  path: '/environment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedingRoute = FeedingRouteImport.update({
+  id: '/feeding',
+  path: '/feeding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HealthRoute = HealthRouteImport.update({
+  id: '/health',
+  path: '/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LivestockRoute = LivestockRouteImport.update({
+  id: '/livestock',
+  path: '/livestock',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OperationsRoute = OperationsRouteImport.update({
+  id: '/operations',
+  path: '/operations',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/environment': typeof EnvironmentRoute
+  '/feeding': typeof FeedingRoute
+  '/health': typeof HealthRoute
+  '/livestock': typeof LivestockRoute
+  '/operations': typeof OperationsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/environment': typeof EnvironmentRoute
+  '/feeding': typeof FeedingRoute
+  '/health': typeof HealthRoute
+  '/livestock': typeof LivestockRoute
+  '/operations': typeof OperationsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/environment': typeof EnvironmentRoute
+  '/feeding': typeof FeedingRoute
+  '/health': typeof HealthRoute
+  '/livestock': typeof LivestockRoute
+  '/operations': typeof OperationsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/environment' | '/feeding' | '/health' | '/livestock' | '/operations'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    '/' | '/environment' | '/feeding' | '/health' | '/livestock' | '/operations'
+  id:
+    | '__root__'
+    | '/'
+    | '/environment'
+    | '/feeding'
+    | '/health'
+    | '/livestock'
+    | '/operations'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EnvironmentRoute: typeof EnvironmentRoute
+  FeedingRoute: typeof FeedingRoute
+  HealthRoute: typeof HealthRoute
+  LivestockRoute: typeof LivestockRoute
+  OperationsRoute: typeof OperationsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +107,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/environment': {
+      id: '/environment'
+      path: '/environment'
+      fullPath: '/environment'
+      preLoaderRoute: typeof EnvironmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feeding': {
+      id: '/feeding'
+      path: '/feeding'
+      fullPath: '/feeding'
+      preLoaderRoute: typeof FeedingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/health': {
+      id: '/health'
+      path: '/health'
+      fullPath: '/health'
+      preLoaderRoute: typeof HealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/livestock': {
+      id: '/livestock'
+      path: '/livestock'
+      fullPath: '/livestock'
+      preLoaderRoute: typeof LivestockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/operations': {
+      id: '/operations'
+      path: '/operations'
+      fullPath: '/operations'
+      preLoaderRoute: typeof OperationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EnvironmentRoute: EnvironmentRoute,
+  FeedingRoute: FeedingRoute,
+  HealthRoute: HealthRoute,
+  LivestockRoute: LivestockRoute,
+  OperationsRoute: OperationsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { FarmDashboard } from "@/components/FarmDashboard";
+export const Route = createFileRoute("/feeding")({ head:()=>({meta:[{title:"精准饲喂 — 牧云智养"},{name:"description",content:"AI 配方与精准饲喂管理中心。"},{property:"og:title",content:"精准饲喂 — 牧云智养"},{property:"og:description",content:"AI 配方与精准饲喂管理中心。"},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}), component:()=> <FarmDashboard page="feeding"/> });
