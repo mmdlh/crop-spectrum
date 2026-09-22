@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { FarmDashboard } from "@/components/FarmDashboard";
+export const Route = createFileRoute("/livestock")({ head:()=>({meta:[{title:"畜群管理 — 牧云智养"},{name:"description",content:"畜群全生命周期与生长状态管理。"},{property:"og:title",content:"畜群管理 — 牧云智养"},{property:"og:description",content:"畜群全生命周期与生长状态管理。"},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}), component:()=> <FarmDashboard page="livestock"/> });
